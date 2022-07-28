@@ -34,6 +34,6 @@ Finally minimap2.alignments.gt was processed by get_genes_from_gtf.pl script to 
 Transcript sequences can be regenerated using the Pinterpunctella_LEAH.gff and the assembly files like this:
 ```
 module load cufflinks
-gffread Pinterpunctella_LEAH.gtf -g ./Plodia_genome_Scully_2022-edit.fa -w test -A
+gffread Pinterpunctella_LEAH.gtf -g ./Plodia_genome_Scully_2022-edit.fa -w Plodia_genome_Scully_2022.transcripts.fasta -A
 ```
 
