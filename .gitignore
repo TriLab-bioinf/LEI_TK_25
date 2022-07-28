@@ -1,0 +1,11 @@
+*.fasta
+*.gtf
+*.gff
+*.clstr
+*.fa
+*.fai
+*.gz
+*.gff3
+*.sam
+*.bam
+slurm*
