@@ -103,18 +103,17 @@ This analysis showed that :
 - 11216 GigaDB genes mapped to Leah's assembly conserving the START and STOP codons (10955 full length).
 - 10877 GigaDB genes mapped to Leah's assembly conserving the START and STOP codons which are also in-frame (10593 are full length).
 
+* New annotation using Leah's RNAseq PacBio data:
 
+For generating annotation based on Leah's RNAseq data I used the following commands:
 
-
-
-
-
-
-
-
-
-
-* Calculation of total genes mapped to the target assembly:
+```
+sbatch --time=4:00:00 --partition=quick --mem=32g run_minimap2.sh Plodia_genome_Scully_2022-edit.fa SRR15699974_subreads.cdhit.fasta minimap2.alignments.leah_rnaseq.tmp
+samtools sort -o minimap2.alignments.leah_rnaseq.bam minimap2.alignments.leah_rnaseq.tmp.sam
+./sam_to_gtf.pl minimap2.alignments.leah_rnaseq.bam > minimap2.alignments.leah_rnaseq.gtf
+cat minimap2.alignments.leah_rnaseq.gtf|./get_genes_from_gtf.pl > Pinterpunctella_LEAH.leah_rnaseq.gff
+gffread Pinterpunctella_LEAH.leah_rnaseq.gff -g ./Plodia_genome_Scully_2022-edit.fa -w Plodia_genome_Scully_2022.transcripts.leah_rnaseq.fasta -A
+```
 
 
 
