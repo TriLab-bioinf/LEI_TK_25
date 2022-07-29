@@ -99,7 +99,7 @@ grep -v '^#' plo_final_annotation_VS_NOFRAME.tbl.bn|cut -f 1|sort -u |wc
 
 This analysis showed that :
 
-- 12078 GigaDB genes mapped to Leah's assembly (10954 as full length).
+- 12078 GigaDB genes mapped to Leah's assembly (10955 as full length).
 - 11216 GigaDB genes mapped to Leah's assembly conserving the START and STOP codons (10955 full length).
 - 10877 GigaDB genes mapped to Leah's assembly conserving the START and STOP codons which are also in-frame (10593 are full length).
 
