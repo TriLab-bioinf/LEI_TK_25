@@ -15,4 +15,5 @@ README_cmds
 blast_analysis/
 get_genes_from_gtf_TEST.pl
 transcrip_vs_gigadb_prot.bx
+gffread.log
 

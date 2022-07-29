@@ -11,7 +11,7 @@ sed -e 's/prediction/mRNA/' plo_final_annotation.gff > plo_final_annotation_mRNA
 gffread plo_final_annotation_mRNA.gff -g PinterpunctellaAssembly.asm.p_ctg_editedv6.fa -w plo_final_annotation.transcripts.fasta -A
 ```
 
-Total transcripts in source genome = 12122 (a few genes didn't produce any transcript given that the  target contigs were not found in the source assembly).  
+Total transcripts in source genome = 12122 (a few genes didn't produce any transcript given that two GigaDB contigs (ptg000001l and ptg000049l) were not found in the source assembly).  
 ```
 grep -c '>' plo_final_annotation.transcripts.fasta
 ```
