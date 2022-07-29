@@ -105,6 +105,14 @@ This analysis showed that :
 
 * New annotation using Leah's RNAseq PacBio data:
 
+First PacBio RNAseq reads were clustered at high stringency with cd-hit using the following command:
+
+```
+sbatch --mem=64g --cpus-per-task=16 run_cdhit_est.sh
+
+```
+One representative transcript per cluster was then used for the analysis below.
+
 For generating annotation based on Leah's RNAseq data I used the following commands:
 
 ```
