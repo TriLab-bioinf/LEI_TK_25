@@ -123,8 +123,27 @@ cat minimap2.alignments.leah_rnaseq.gtf|./get_genes_from_gtf.pl > Pinterpunctell
 gffread Pinterpunctella_LEAH.leah_rnaseq.gff -g ./Plodia_genome_Scully_2022-edit.fa -w Plodia_genome_Scully_2022.transcripts.leah_rnaseq.fasta -A
 ```
 
+**Merging genes that overlap at least 500bp in new gff**
 
-
+GFF genes that overlap at least 500bp were detected with bedtools (v2.30.0):
+```
+egrep '\tgene\t' Pinterpunctella_LEAH.plo_final.gff > tmp.gff
+bedtools cluster -s -d -500 -i tmp.gff > tmp.500bp.bed
+```
+Then, overlappping gff annotation was merged as described below:
+```
+./merge_overlapping_genes.pl -b tmp.500bp.bed -g Pinterpunctella_LEAH.plo_final.gff >  Pinterpunctella_LEAH.plo_final.clustered.gff.tmp
+```
+The resulting gff file was then sorted by gene position and mRNA position:
+```
+egrep '\tgene\t' Pinterpunctella_LEAH.plo_final.clustered.gff.tmp |cut -f 2 -d '"' > cluster.ids
+for i in `cat cluster.ids`; do echo $i; grep -w $i Pinterpunctella_LEAH.plo_final.clustered.gff.tmp >> sorted.gff; done 
+```
+The sorted gff was afterwards processed to eliminate redundant transcripts that share exactly the same exonic structure:
+```
+cat sorted.gff | ./remove_redundant_transcripts.pl > mRNA.NR.ids
+egrep -wf mRNA.NR.ids sorted.gff > sorted.NR.gff
+```
 
 
 
