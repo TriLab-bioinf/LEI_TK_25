@@ -83,7 +83,7 @@ grep -B 1 -P "^ATG(...)+(TAA|TAG|TGA)$" Plodia_genome_Scully_2022.transcripts.pl
 Transcripts from  Leah's assembly were compared to GigaDB  transcripts using blastn by running the following commands:
 
 ```
-module load blast
+module load blast/2.13.0+
 
 makeblastdb -in Plodia_genome_Scully_2022.with_START_STOP_INFRAME.transcripts.fasta -dbtype nucl
 
