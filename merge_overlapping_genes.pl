@@ -77,7 +77,3 @@ while(<GFF>){
 }
 close GFF;
 
-#scaffold1   GIGAdb  gene    16513   59818   .   +   .   ID="gene_N198"; Evidence_id="plodia_orig_RNA-XM_038016986.1_R9.p1";
-#scaffold1   GIGAdb  mRNA    9021    59818   .   +   .   ID="mRNA_1"; Parent="gene_1" ;Evidence_id="plodia_orig_RNA-XM_038016986.1_R9.p1";
-#scaffold1   GIGAdb  exon    9021    10422   .   +   .   ID="exon_1.1"; Exon_number="1"; gene_id="gene_N198";Parent="mRNA_1"
-
