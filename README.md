@@ -145,5 +145,18 @@ cat sorted.gff | ./remove_redundant_transcripts.pl > mRNA.NR.ids
 egrep -wf mRNA.NR.ids sorted.gff > sorted.NR.gff
 ```
 
+**New gene merge protocol by percent overlap (>=50% of smallest gene)**
 
+```
+./merge_genes_from_gff.py -g Pinterpunctella_LEAH.plo_final.gff -o 0.5 > tmp.500bp_NEW.bed
 
+./merge_overlapping_genes.pl -b tmp.500bp_NEW.bed -g Pinterpunctella_LEAH.plo_final.gff >  Pinterpunctella_LEAH.plo_final.clustered_NEW.gff.tmp
+
+egrep '\tgene\t' Pinterpunctella_LEAH.plo_final.clustered_NEW.gff.tmp |cut -f 2 -d '"' > cluster_NEW.ids
+
+for i in `cat cluster_NEW.ids`; do echo $i; grep -w $i Pinterpunctella_LEAH.plo_final.clustered_NEW.gff.tmp >> sorted_NEW.gff; done
+
+cat sorted_NEW.gff| ./remove_redundant_transcripts.pl > mRNA_NEW.NR.ids
+
+egrep -wf mRNA_NEW.NR.ids sorted_NEW.gff > sorted_NEW.NR.gff
+```
