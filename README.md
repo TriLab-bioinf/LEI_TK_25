@@ -142,8 +142,11 @@ Then, overlappping gff annotation was merged as described below:
 ```
 The resulting gff file was then sorted by gene position and mRNA position:
 ```
-egrep '\tgene\t' Pinterpunctella_LEAH.plo_final.clustered.gff.tmp |cut -f 2 -d '"' > cluster.ids
-for i in `cat cluster.ids`; do echo $i; grep -w $i Pinterpunctella_LEAH.plo_final.clustered.gff.tmp >> sorted.gff; done 
+egrep '\tgene\t' Pinterpunctella_LEAH.plo_final.clustered.gff.tmp | cut -f 2 -d '"' > cluster.ids
+for i in `cat cluster.ids`
+     do echo $i
+     grep -w $i Pinterpunctella_LEAH.plo_final.clustered.gff.tmp >> sorted.gff
+     done 
 ```
 The sorted gff was afterwards processed to eliminate redundant transcripts that share exactly the same exonic structure:
 ```
@@ -160,7 +163,10 @@ egrep -wf mRNA.NR.ids sorted.gff > sorted.NR.gff
 
 egrep '\tgene\t' Pinterpunctella_LEAH.plo_final.clustered_NEW.gff.tmp |cut -f 2 -d '"' > cluster_NEW.ids
 
-for i in `cat cluster_NEW.ids`; do echo $i; grep -w $i Pinterpunctella_LEAH.plo_final.clustered_NEW.gff.tmp >> sorted_NEW.gff; done
+for i in `cat cluster_NEW.ids`
+     do echo $i
+     grep -w $i Pinterpunctella_LEAH.plo_final.clustered_NEW.gff.tmp >> sorted_NEW.gff
+     done
 
 cat sorted_NEW.gff| ./remove_redundant_transcripts.pl > mRNA_NEW.NR.ids
 
