@@ -116,11 +116,17 @@ One representative transcript per cluster was then used for the analysis below.
 For generating annotation based on Leah's RNAseq data I used the following commands:
 
 ```
-sbatch --time=4:00:00 --partition=quick --mem=32g run_minimap2.sh Plodia_genome_Scully_2022-edit.fa SRR15699974_subreads.cdhit.fasta minimap2.alignments.leah_rnaseq.tmp
-samtools sort -o minimap2.alignments.leah_rnaseq.bam minimap2.alignments.leah_rnaseq.tmp.sam
-./sam_to_gtf.pl minimap2.alignments.leah_rnaseq.bam > minimap2.alignments.leah_rnaseq.gtf
+sbatch --time=4:00:00 --partition=quick --mem=32g run_minimap2.sh Plodia_genome_Scully_2022-edit.fa \
+      SRR15699974_subreads.cdhit.fasta minimap2.alignments.leah_rnaseq.tmp
+
+samtools sort -o minimap2.alignments.leah_rnaseq.bam minimap2.alignments.leah_rnaseq.tmp.sam \
+      ./sam_to_gtf.pl minimap2.alignments.leah_rnaseq.bam > minimap2.alignments.leah_rnaseq.gtf
+
 cat minimap2.alignments.leah_rnaseq.gtf|./get_genes_from_gtf.pl > Pinterpunctella_LEAH.leah_rnaseq.gff
-gffread Pinterpunctella_LEAH.leah_rnaseq.gff -g ./Plodia_genome_Scully_2022-edit.fa -w Plodia_genome_Scully_2022.transcripts.leah_rnaseq.fasta -A
+
+gffread Pinterpunctella_LEAH.leah_rnaseq.gff \
+     -g ./Plodia_genome_Scully_2022-edit.fa \
+     -w Plodia_genome_Scully_2022.transcripts.leah_rnaseq.fasta -A
 ```
 
 **Merging genes that overlap at least 500bp in new gff**
