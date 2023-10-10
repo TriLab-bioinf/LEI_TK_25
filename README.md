@@ -47,9 +47,8 @@ module load cufflinks
 gffread Pinterpunctella_LEAH.plo_final.gff -g ./Plodia_genome_Scully_2022-edit.fa -w Plodia_genome_Scully_2022.transcripts.plo_final.fasta -A
 ```
 
-*QC of genes mapped to Leah's P. interpunctella assembly*
-
-* Quantification of new genes from Leah's assembly containing START and STOP codons, in-frame or not.
+**QC of genes mapped to Leah's P. interpunctella assembly**
+Quantification of new genes from Leah's assembly containing START and STOP codons, in-frame or not.
 
 Total number of genes in Leah's assembly = 16493  
 ```
@@ -78,7 +77,7 @@ grep -B 1 -P "^ATG.+(TAA|TAG|TGA)$" Plodia_genome_Scully_2022.transcripts.plo_fi
 grep -B 1 -P "^ATG(...)+(TAA|TAG|TGA)$" Plodia_genome_Scully_2022.transcripts.plo_final_2LineSeq.fasta| grep -c '>'
  ```
 
-* Evaluation of how many genes were mapped from GigaDB assembly to Leah's:
+**Evaluation of how many genes were mapped from GigaDB assembly to Leah's:**
 
 Transcripts from  Leah's assembly were compared to GigaDB  transcripts using blastn by running the following commands:
 
@@ -103,7 +102,7 @@ This analysis showed that :
 - 11216 GigaDB genes mapped to Leah's assembly conserving the START and STOP codons (10955 full length).
 - 10877 GigaDB genes mapped to Leah's assembly conserving the START and STOP codons which are also in-frame (10593 are full length).
 
-* New annotation using Leah's RNAseq PacBio data:
+**New annotation using Leah's RNAseq PacBio data:**
 
 First PacBio RNAseq reads were clustered at high stringency with cd-hit using the following command:
 
