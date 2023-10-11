@@ -35,7 +35,7 @@ The sorted bam file was processed with sam_to_gtf.pl to generate a temporary gtf
 ./sam_to_gtf.pl minimap2.alignments.plo_final.bam > minimap2.alignments.plo_final.gtf
 ```
 
-Finally minimap2.alignments.gt was processed by get_genes_from_gtf.pl script to generate the final gff file with the annotation:
+Finally minimap2.alignments.gtf was processed by get_genes_from_gtf.pl script to generate the final gff file with the annotation:
 
 ```
 cat minimap2.alignments.plo_final.gtf|./get_genes_from_gtf.pl > Pinterpunctella_LEAH.plo_final.gff
